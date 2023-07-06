@@ -2,12 +2,15 @@ package com.lucaspp.workkshopmongo.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.lucaspp.workkshopmongo.dto.AuthorDTO;
+import com.lucaspp.workkshopmongo.dto.CommentDTO;
 
 @Document
 public class Post implements Serializable {
@@ -20,6 +23,8 @@ public class Post implements Serializable {
 	private String tittle;
 	private String body;
 	private AuthorDTO author;
+
+	private List<CommentDTO> comment = new ArrayList<>();
 
 	public Post() {
 
@@ -72,6 +77,14 @@ public class Post implements Serializable {
 
 	public void setAuthor(AuthorDTO author) {
 		this.author = author;
+	}
+
+	public List<CommentDTO> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<CommentDTO> comment) {
+		this.comment = comment;
 	}
 
 	@Override
